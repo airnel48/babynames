@@ -4,7 +4,7 @@ import pandas as pd
 
 # load baby names sourced from https://www.ssa.gov/oact/babynames/limits.html
 
-names = pd.read_csv('yob2018.txt', sep=",", header=None)
+names = pd.read_csv(params.input+'yob2018.txt', sep=",", header=None)
 names.columns = ['name', 'sex', 'baby_count']
 names['weight'] = round(names['baby_count']/10)+1
 
@@ -60,5 +60,5 @@ def name_feedback():
 
 name_feedback()
 
-export_girl_csv = girl_name_feedback.to_csv(params.local+'/girl_name_feedback.csv', index = None, header=True)
-export_boy_csv = boy_name_feedback.to_csv(params.local+'/boy_name_feedback.csv', index = None, header=True)
+export_girl_csv = girl_name_feedback.to_csv(params.output+'girl_name_feedback.csv', index = None, header=True)
+export_boy_csv = boy_name_feedback.to_csv(params.output+'boy_name_feedback.csv', index = None, header=True)

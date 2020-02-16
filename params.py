@@ -1,5 +1,3 @@
 
-from datetime import datetime
-
-local = '/Users/ericnelson/PycharmProjects/babynames'
-now = str(datetime. now())
+input = '/Users/ericnelson/PycharmProjects/babynames/input_data/'
+output = '/Users/ericnelson/PycharmProjects/babynames/output_data/'

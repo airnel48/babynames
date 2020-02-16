@@ -3,9 +3,9 @@ import params
 import numpy as np
 import pandas as pd
 
-girl_name_feedback = pd.read_csv('girl_name_feedback.csv', sep=",")
-boy_name_feedback = pd.read_csv('boy_name_feedback.csv', sep=",")
-name_features = pd.read_json(params.local + '/name_features.json')
+girl_name_feedback = pd.read_csv(params.output + 'girl_name_feedback.csv', sep=",")
+boy_name_feedback = pd.read_csv(params.output + 'boy_name_feedback.csv', sep=",")
+name_features = pd.read_json(params.output + 'name_features.json')
 
 girl_name_feedback['response'] = girl_name_feedback['response'].map({'y': 1, 'n': 0})
 boy_name_feedback['response'] = boy_name_feedback['response'].map({'y': 1, 'n': 0})
@@ -37,11 +37,11 @@ def train_validate_test_split(df, train_percent=.6, validate_percent=.2, seed=1)
 f_train, f_validate, f_test = train_validate_test_split(name_inputs_f)
 m_train, m_validate, m_test = train_validate_test_split(name_inputs_m)
 
-f_train.to_json(params.local+'/f_train.json')
-f_validate.to_json(params.local+'/f_validate.json')
-f_test.to_json(params.local+'/f_test.json')
-m_train.to_json(params.local+'/m_train.json')
-m_validate.to_json(params.local+'/m_validate.json')
-m_test.to_json(params.local+'/m_test.json')
-targetless_f.to_json(params.local+'/targetless_f.json')
-targetless_m.to_json(params.local+'/targetless_m.json')
+f_train.to_json(params.output+'/f_train.json')
+f_validate.to_json(params.output+'/f_validate.json')
+f_test.to_json(params.output+'/f_test.json')
+m_train.to_json(params.output+'/m_train.json')
+m_validate.to_json(params.output+'/m_validate.json')
+m_test.to_json(params.output+'/m_test.json')
+targetless_f.to_json(params.output+'/targetless_f.json')
+targetless_m.to_json(params.output+'/targetless_m.json')

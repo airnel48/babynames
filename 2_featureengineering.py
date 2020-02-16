@@ -9,7 +9,7 @@ import pandas as pd
 yob_names = ['yob2018','yob2017','yob2008','yob1998','yob1950','yob1900']
 yob_dict = {}
 for name in yob_names:
-    yob_dict[name] = pd.read_csv(name + '.txt', sep = ",", header = None)
+    yob_dict[name] = pd.read_csv(params.input + name + '.txt', sep = ",", header = None)
     yob_dict[name].columns = ['name', 'sex', 'count_' + name]
 
 # state-level data (sourced from https://www.ssa.gov/oact/babynames/limits.html)
@@ -17,7 +17,7 @@ for name in yob_names:
 state_names = ['oh','in','il','ny','ca','tx','ga','ms','co','wa','ma']
 state_dict = {}
 for name in state_names:
-    state_dict[name] = pd.read_csv(name + '.txt', sep = ",", header = None)
+    state_dict[name] = pd.read_csv(params.input + name + '.txt', sep = ",", header = None)
     state_dict[name].columns = ['state', 'sex', 'year', 'name', 'count_state_' + name]
 
 # limit state-level results to the year 2018
@@ -66,4 +66,4 @@ name_features['change_20y_pct'] = ((name_features['count_yob2018'] - name_featur
 name_features['change_20y_abs'] = (name_features['count_yob2018'] - name_features['count_yob1998'])
 name_features = name_features.fillna(0)
 
-name_features = name_features.to_json(params.local+'/name_features.json')
+name_features = name_features.to_json(params.output+'name_features.json')
